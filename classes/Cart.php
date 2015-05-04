@@ -3477,7 +3477,8 @@ class CartCore extends ObjectModel
 					(isset($value['id_address_delivery']) ? (int)$value['id_address_delivery'] : 0).', '.
 					(int)$value['quantity'].', NOW(), '.(int)Context::getContext()->shop->id.'),';
 
-			Db::getInstance()->execute(rtrim($query, ','));
+			if (count($values) > 0)
+				Db::getInstance()->execute(rtrim($query, ','));
 		}
 
 		return true;
